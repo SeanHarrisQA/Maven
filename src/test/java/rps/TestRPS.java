@@ -29,5 +29,69 @@ public class TestRPS {
 		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
 	}
 
+	@Test
+	void testRockWin() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(2);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.ROCK), "You WIN!!!");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testRockLose() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(1);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.ROCK), "You lose");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testPaperDraw() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(1);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.PAPER), "Nobody wins");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testPaperWin() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(0);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.PAPER), "You WIN!!!");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testPaperLose() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(2);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.PAPER), "You lose");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testScissorsDraw() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(2);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.SCISSORS), "Nobody wins");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testScissorsWin() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(1);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.SCISSORS), "You WIN!!!");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
+	@Test
+	void testScissorsLose() {
+		Mockito.when(this.rand.nextInt(3)).thenReturn(0);
+		for (int i = 0; i < 1000; i++)
+			assertEquals(this.simulator.play(RockPaperScissors.SCISSORS), "You lose");
+		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
+	}
+
 	/// Do these same tests again
 }
