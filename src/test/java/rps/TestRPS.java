@@ -93,5 +93,4 @@ public class TestRPS {
 		Mockito.verify(this.rand, Mockito.times(1000)).nextInt(3);
 	}
 
-	/// Do these same tests again
 }
